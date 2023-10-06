@@ -8,8 +8,8 @@ public class CalcTask extends Task {
     public static final AtomicLong RESULT = new AtomicLong();
     Random random = new Random();
 
-    public CalcTask(SemaphorePair semaphore1) {
-        super(semaphore1);
+    public CalcTask(ParkerUnparker parkerUnparker) {
+        super(parkerUnparker);
     }
 
     @Override

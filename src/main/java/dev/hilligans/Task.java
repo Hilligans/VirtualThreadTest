@@ -5,11 +5,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public abstract class Task implements Runnable {
 
-    public SemaphorePair semaphorePair;
+    public ParkerUnparker parker;
     public boolean running = true;
 
-    public Task(SemaphorePair semaphore1) {
-        this.semaphorePair = semaphore1;
+    public Task(ParkerUnparker parker) {
+        this.parker = parker;
     }
 
     abstract void tick();
@@ -17,7 +17,7 @@ public abstract class Task implements Runnable {
     @Override
     public void run() {
         while (running) {
-            semaphorePair.block();
+            parker.park();
             try {
                 tick();
             } catch (Exception e) {

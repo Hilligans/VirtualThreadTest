@@ -2,10 +2,12 @@ package dev.hilligans;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.LockSupport;
 
 public class SemaphorePair {
 
     public volatile Semaphore semaphore1;
+
     public volatile Semaphore semaphore2;
 
     public int waitCount;
